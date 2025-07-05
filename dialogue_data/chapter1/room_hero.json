@@ -1,0 +1,25 @@
+[
+{
+    "id": 1,
+    "speaker": "Mother",
+    "text": "Я задержусь на работе.",
+    "choices": null,
+    "next": 2
+},
+{
+    "id": 2,
+    "speaker": "Hero",
+    "text": "Ладно... Что это за чип?",
+    "choices": null,
+    "next": 3
+},
+{
+    "id": 3,
+    "speaker": "Mother",
+    "text": "В шкафу твой подарок.",
+    "choices": [
+    {"text": "Открыть шкаф", "next": 4},
+    {"text": "Игнорировать", "next": 5}
+    ]
+}
+]

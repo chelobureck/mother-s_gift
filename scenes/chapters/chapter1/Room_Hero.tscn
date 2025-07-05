@@ -1,0 +1,7 @@
+[gd_scene format=3]
+
+[node name="Room_Hero" type="Node2D"]
+[node name="Background" type="Sprite2D" parent="."]
+texture = preload("res://assets/backgrounds/room_evening.png")
+
+[node name="DialogueBox" parent="." instance=ExtResource(1)]
