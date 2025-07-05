@@ -2,8 +2,19 @@ using Godot;
 
 public partial class PuzzleManager : Node
 {
-    public void LoadPuzzle(string puzzleScene)
+    [Export]
+    public string PuzzleScenePath = "";
+
+    public void LoadPuzzle()
     {
-        GetTree().ChangeSceneToFile(puzzleScene);
+        if (!string.IsNullOrEmpty(PuzzleScenePath))
+        {
+            GD.Print($"Loading puzzle scene: {PuzzleScenePath}");
+            GetTree().ChangeSceneToFile(PuzzleScenePath);
+        }
+        else
+        {
+            GD.PrintErr("PuzzleScenePath is empty!");
+        }
     }
 }

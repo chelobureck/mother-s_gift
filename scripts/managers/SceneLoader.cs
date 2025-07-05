@@ -2,8 +2,19 @@ using Godot;
 
 public partial class SceneLoader : Node
 {
-    public void LoadScene(string path)
+    [Export]
+    public string ScenePath = "";
+
+    public void LoadScene()
     {
-        GetTree().ChangeSceneToFile(path);
+        if (!string.IsNullOrEmpty(ScenePath))
+        {
+            GD.Print($"Loading scene: {ScenePath}");
+            GetTree().ChangeSceneToFile(ScenePath);
+        }
+        else
+        {
+            GD.PrintErr("Scene path is empty!");
+        }
     }
 }

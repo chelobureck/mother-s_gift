@@ -1,9 +1,9 @@
 using Godot;
 
-public partial class PuzzleGenomeLogic : Node
+public partial class PuzzleMutationLogic : Node
 {
     [Export]
-    public string PuzzleName = "PuzzleGenome";
+    public string PuzzleName = "PuzzleMutation";
 
     public void CheckSolution()
     {

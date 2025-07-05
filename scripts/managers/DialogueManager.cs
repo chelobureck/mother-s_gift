@@ -3,21 +3,31 @@ using System.Collections.Generic;
 
 public partial class DialogueManager : Node
 {
-    [Export] public string DialoguePath = "res://dialogue_data/chapter1/room_hero.json";
-    private List<DialogueLine> lines;
-    private int currentIndex = 0;
+    [Signal]
+    public delegate void DialogueUpdatedEventHandler(string speaker, string text, List<Choice> choices);
 
-    [Signal] public delegate void DialogueUpdatedEventHandler(string speaker, string text, List<Choice> choices);
+    [Signal]
+    public delegate void DialogueEndedEventHandler();
+
+    [Export]
+    public string DialoguePath = "";
+
+    private List<DialogueLine> lines = new();
+    private int currentIndex = 0;
 
     public override void _Ready()
     {
-        LoadDialogue();
-        Advance();
+        if (!string.IsNullOrEmpty(DialoguePath))
+        {
+            LoadDialogue();
+            Advance();
+        }
     }
 
     private void LoadDialogue()
     {
         lines = JSONLoader.LoadJsonFile<List<DialogueLine>>(DialoguePath);
+        GD.Print($"Loaded {lines.Count} dialogue lines from {DialoguePath}");
     }
 
     public void Advance(int choiceNextId = -1)
@@ -25,17 +35,24 @@ public partial class DialogueManager : Node
         if (choiceNextId > 0)
         {
             currentIndex = lines.FindIndex(l => l.id == choiceNextId);
+            GD.Print($"Advancing by choice to ID: {choiceNextId}");
         }
 
-        if (currentIndex >= lines.Count)
+        if (currentIndex < 0 || currentIndex >= lines.Count)
         {
-            GD.Print("Dialogue ended.");
+            GD.Print("Dialogue finished!");
+            EmitSignal(nameof(DialogueEnded));
             return;
         }
 
         var line = lines[currentIndex];
+        GD.Print($"[Dialogue] {line.speaker}: {line.text}");
         EmitSignal(nameof(DialogueUpdated), line.speaker, line.text, line.choices);
-        currentIndex = lines.FindIndex(l => l.id == line.next);
+
+        if (line.choices == null || line.choices.Count == 0)
+        {
+            currentIndex = lines.FindIndex(l => l.id == line.next);
+        }
     }
 }
 
