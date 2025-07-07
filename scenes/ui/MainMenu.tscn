@@ -1,0 +1,102 @@
+[gd_scene load_steps=23 format=3 uid="uid://moaxg8q62it3"]
+
+[ext_resource type="Texture2D" uid="uid://duron3p7wytto" path="res://assets/backgrounds/Entrance-to-the-Lab.png" id="1_7uy2f"]
+[ext_resource type="Script" uid="uid://bu0tijifqfcxw" path="res://scripts/ui/MainMenu.cs" id="1_dq25m"]
+[ext_resource type="Texture2D" uid="uid://b7eaiexr8fi4u" path="res://assets/ui/NewGame_Button_sprites/Button_NewGame_Default.png" id="2_0oadh"]
+[ext_resource type="Texture2D" uid="uid://cr20hoy6qevfu" path="res://assets/ui/NewGame_Button_sprites/Button _NewGame_Pressed.png" id="3_ayd4e"]
+[ext_resource type="Texture2D" uid="uid://dhnap2kfbri3j" path="res://assets/ui/NewGame_Button_sprites/Button_NewGame_Hovered.png" id="4_3da5a"]
+[ext_resource type="Texture2D" uid="uid://8fhq3grixir2" path="res://assets/ui/NewGame_Button_sprites/Button_NewGame_Disabled.png" id="5_8rx73"]
+[ext_resource type="Texture2D" uid="uid://d0o0thqkgpey3" path="res://assets/ui/Levels_Button_sprites/Button_Levels_Default.png" id="6_ns3en"]
+[ext_resource type="Texture2D" uid="uid://ewssi86iy8sl" path="res://assets/ui/Levels_Button_sprites/Button_Levels_Pressed.png" id="7_ybqsv"]
+[ext_resource type="Texture2D" uid="uid://c1gjcucqe8kbu" path="res://assets/ui/Levels_Button_sprites/Button_Levels_Hovered.png" id="8_1fge5"]
+[ext_resource type="Texture2D" uid="uid://kt0hc4rglilh" path="res://assets/ui/Levels_Button_sprites/Button_Levels_Disabled.png" id="9_utjo4"]
+[ext_resource type="Texture2D" uid="uid://cjdncog88dnkx" path="res://assets/ui/Quit_Button_sprites/Button _Quit_Default.png" id="14_8pcrd"]
+[ext_resource type="Texture2D" uid="uid://cv24oe1t8kyva" path="res://assets/ui/Quit_Button_sprites/Button _Quit_Pressed.png" id="15_gm6b6"]
+[ext_resource type="Texture2D" uid="uid://cpjelc8c1ejbg" path="res://assets/ui/Quit_Button_sprites/Button _Quit_Hovered.png" id="16_5dmpn"]
+[ext_resource type="Texture2D" uid="uid://c1c0rl8cvfxxc" path="res://assets/ui/Quit_Button_sprites/Button  _Quit_Disabled.png" id="17_2yjul"]
+[ext_resource type="Texture2D" uid="uid://dnf56mh3plm08" path="res://assets/ui/Settings_Buton_sprites/Settings_Button_Default.png" id="19_jfpbv"]
+[ext_resource type="Texture2D" uid="uid://dfdjrfucucvlw" path="res://assets/ui/Settings_Buton_sprites/Settings_Button_Pressed.png" id="20_whkpc"]
+[ext_resource type="Texture2D" uid="uid://b6h3to0q8mhuy" path="res://assets/ui/Settings_Buton_sprites/Settings_Button_Hovered.png" id="21_wyc10"]
+[ext_resource type="Texture2D" uid="uid://uklrr6iribxc" path="res://assets/ui/Settings_Buton_sprites/Settings_Button_Disabled.png" id="22_8pcrd"]
+[ext_resource type="Texture2D" uid="uid://cmryfnb374ovb" path="res://assets/ui/QuestionMark_Button_sprites/QuestionMark_Button_Default.png" id="23_gm6b6"]
+[ext_resource type="Texture2D" uid="uid://dd7qngkssx34n" path="res://assets/ui/QuestionMark_Button_sprites/QuestionMark_Button_Pressed.png" id="24_5dmpn"]
+[ext_resource type="Texture2D" uid="uid://di8ywj1vs71x1" path="res://assets/ui/QuestionMark_Button_sprites/QuestionMark_Button_Hovered.png" id="25_2yjul"]
+[ext_resource type="Texture2D" uid="uid://dc17gqu7v5m8u" path="res://assets/ui/QuestionMark_Button_sprites/QuestionMark_Button_Disabled.png" id="26_x4jdb"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 4.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dq25m")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 7016.0
+offset_bottom = 4961.0
+scale = Vector2(0.164638, 0.15427)
+texture = ExtResource("1_7uy2f")
+expand_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 0
+offset_left = 230.0
+offset_top = 161.0
+offset_right = 669.0
+offset_bottom = 458.0
+scale = Vector2(1.58102, 1.47009)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="NewGameButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_0oadh")
+texture_pressed = ExtResource("3_ayd4e")
+texture_hover = ExtResource("4_3da5a")
+texture_disabled = ExtResource("5_8rx73")
+
+[node name="ChaptersButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_ns3en")
+texture_pressed = ExtResource("7_ybqsv")
+texture_hover = ExtResource("8_1fge5")
+texture_disabled = ExtResource("9_utjo4")
+
+[node name="QuitButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("14_8pcrd")
+texture_pressed = ExtResource("15_gm6b6")
+texture_hover = ExtResource("16_5dmpn")
+texture_disabled = ExtResource("17_2yjul")
+
+[node name="SettingsButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 447.0
+offset_right = 256.0
+offset_bottom = 491.0
+texture_normal = ExtResource("19_jfpbv")
+texture_pressed = ExtResource("20_whkpc")
+texture_hover = ExtResource("21_wyc10")
+texture_disabled = ExtResource("22_8pcrd")
+
+[node name="QuestionMarkButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.851
+offset_left = 906.0
+offset_top = 447.0
+offset_right = -208.0
+offset_bottom = -165.419
+texture_normal = ExtResource("23_gm6b6")
+texture_pressed = ExtResource("24_5dmpn")
+texture_hover = ExtResource("25_2yjul")
+texture_disabled = ExtResource("26_x4jdb")

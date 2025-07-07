@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public partial class DialogueManager : Node
 {
     [Signal]
-    public delegate void DialogueUpdatedEventHandler(string speaker, string text, List<Choice> choices);
+    public delegate void DialogueUpdatedEventHandler(string speaker, string text);
 
     [Signal]
     public delegate void DialogueEndedEventHandler();
@@ -14,6 +14,7 @@ public partial class DialogueManager : Node
 
     private List<DialogueLine> lines = new();
     private int currentIndex = 0;
+    private List<Choice> currentChoices = null;
 
     public override void _Ready()
     {
@@ -46,13 +47,19 @@ public partial class DialogueManager : Node
         }
 
         var line = lines[currentIndex];
+        currentChoices = line.choices;
         GD.Print($"[Dialogue] {line.speaker}: {line.text}");
-        EmitSignal(nameof(DialogueUpdated), line.speaker, line.text, line.choices);
+        EmitSignal(nameof(DialogueUpdated), line.speaker, line.text);
 
         if (line.choices == null || line.choices.Count == 0)
         {
             currentIndex = lines.FindIndex(l => l.id == line.next);
         }
+    }
+
+    public List<Choice> GetCurrentChoices()
+    {
+        return currentChoices;
     }
 }
 
